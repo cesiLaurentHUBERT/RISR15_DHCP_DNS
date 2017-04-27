@@ -3,6 +3,8 @@
 ## Introduction
 Ceci est une procédure permettant d'installer un serveur DHCP et DNS sur une machine Debian.
 
+![Schéma du réseau](images/reseau.png)
+
 Dans ce cas précis, on utilise une VM dont le réseau est 172.16.81.0/24 sur une deuxième carte (eth1). Ceci est à adapter aux besoins.
 
 Attention: il sera nécessaire de rajouter sur les clients (VM) les lignes suivantes si elles ont une seconde carte réseau:
@@ -32,14 +34,14 @@ iface eth1 inet static
     network 172.16.81.0
     netmask 255.255.255.0
     broadcast 172.16.81.255
-    
+
 ```
 
 Pas de gateway (eth1 n'est pas la passerelle vers internet)
 
 On redémarre:
 ```bash
-sudo systemctl restart networking 
+sudo systemctl restart networking
 ```
 
 ### Serveur DHCP
@@ -86,7 +88,7 @@ authoritative;
 # have to hack syslog.conf to complete the redirection).
 log-facility local7;
 
-# No service will be given on this subnet, but declaring it helps the 
+# No service will be given on this subnet, but declaring it helps the
 # DHCP server to understand the network topology.
 subnet 192.168.0.0 netmask 255.255.255.0 {
 }
@@ -98,13 +100,13 @@ On ajoute le paragraphe suivant:
 subnet 172.16.81.0 netmask 255.255.255.0 {
   authoritative;
   range                       172.16.81.13 172.16.81.50;
-  option domain-name-servers  172.16.81.2 ; 
-  option domain-name          "exemple.cesi"; 
+  option domain-name-servers  172.16.81.2 ;
+  option domain-name          "exemple.cesi";
   option routers              172.16.81.2;
-  default-lease-time          3600; 
-  max-lease-time              3600; 
-  option subnet-mask          255.255.255.0; 
-  option broadcast-address    172.16.81.255; 
+  default-lease-time          3600;
+  max-lease-time              3600;
+  option subnet-mask          255.255.255.0;
+  option broadcast-address    172.16.81.255;
 
 }
 
@@ -139,7 +141,7 @@ less /var/lib/dhcp/dhcpd.leases
 
 #### Installation du paquet
 
-```bash 
+```bash
 sudo apt-get install bind9 bind9utils bind9-doc
 ```
 
@@ -154,7 +156,7 @@ zone "exemple.cesi" {
         type master;
         file "/etc/bind/db.exemple.cesi";
 };
- 
+
 // Definition des reverses
 zone "81.16.172.in-addr.arpa" {
         type master;
@@ -172,12 +174,12 @@ On fait correspondre ici un nom à une adresse IP. Ainsi, `trisquel.exemple.cesi
 ```conf
 $TTL    604800
 @       IN      SOA     ns.exemple.cesi. admin.exemple.cesi. (17032304 604800 86400 2417200 604800)
- 
+
 @               IN      NS      ns.exemple.cesi.
 ns              IN      A       172.16.81.2
 netservice      IN      A       172.16.81.2
- 
- 
+
+
 ;serveur
 debiansrv       IN      A       172.16.81.11
 debsrv          IN      A       172.16.81.11
@@ -186,10 +188,10 @@ trisquel        IN      A       172.16.81.12
 ; Infrastructure
 ; LDAP
 ;llithyie        IN      A       172.16.81.150
- 
+
 ; CAS SSO
 ;cerbere         IN      A       172.16.81.151
- 
+
 ; Mail
 ;                IN      MX 10   hermes.exemple.cesi.
 ;hermes          IN      A       172.16.81.152
@@ -209,13 +211,13 @@ Ici on fait correspondre l'IP au nom. Ainsi, à partir de l'adresse **12** (et d
 ```bash
 $TTL 1800
 @       IN      SOA     ns.exemple.cesi. admin.exemple.cesi. (3 14400 3600 604800 10800)
-                    
+
 @       IN      NS      ns.
 2       IN      PTR     ns.exemple.cesi.
-                    
+
 11      IN      PTR     debiansrv.exemple.cesi.
 12      IN      PTR     trisquel.exemple.cesi.                    
-                    
+
 ;150     IN      PTR     llithyie.exemple.cesi.
 ;151     IN      PTR     cerbere.exemple.cesi.
 ;152     IN      PTR     hermes.exemple.cesi.
@@ -237,19 +239,19 @@ options {
         // to talk to, you may need to fix the firewall to allow multiple
         // ports to talk.  See http://www.kb.cert.org/vuls/id/800113
 
-        // If your ISP provided one or more IP addresses for stable 
+        // If your ISP provided one or more IP addresses for stable
         // nameservers, you probably want to use them as forwarders.  
-        // Uncomment the following block, and insert the addresses replacing 
+        // Uncomment the following block, and insert the addresses replacing
         // the all-0's placeholder.
 
         //allow-recursion { localhost; };
         allow-recursion { any; };
-        
+
         forwarders { 8.8.8.8; };
 
         dnssec-enable no;
         dnssec-validation no;
- 
+
         auth-nxdomain no;    # conform to RFC1035
         listen-on-v6 { any; };
         listen-on { any; };
@@ -262,10 +264,10 @@ options {
 #### Vérification
 ```bash
 $ sudo named-checkconf
-$ sudo named-checkzone exemple.cesi /etc/bind/db.exemple.cesi 
+$ sudo named-checkzone exemple.cesi /etc/bind/db.exemple.cesi
 zone exemple.com/IN: loaded serial 17032304
 OK
-$ sudo named-checkzone exemple.cesi /etc/bind/db.81.16.172.in-addr.arpa 
+$ sudo named-checkzone exemple.cesi /etc/bind/db.81.16.172.in-addr.arpa
 zone exemple.com/IN: loaded serial 3
 OK
 
