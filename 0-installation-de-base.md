@@ -19,6 +19,7 @@ Editer le fichier `/etc/apt/sources.list`:
 ```bash
 sudo nano /etc/apt/sources.list
 ```
+Commenter les lignes commençant par `deb http://security.debian.org` et `deb-src http://security.debian.org/`
 
 Rajouter les lignes depuis https://wiki.debian.org/fr/SourcesList
 
