@@ -1,16 +1,15 @@
 
 
 L’objectif de ce TD est de vous familiariser avec les commandes de base
-d’Unix. Il est normal que vous ne sachiez pas répondre à quelques[^1]
-questions. Lorsque vous êtes bloqués, demandez de l’aide à votre
-professeur. Par ailleurs, si la réponse à une question vous semble trop
+d’Unix/Linux. Il est normal que vous ne sachiez pas répondre à quelques
+questions. Lorsque vous êtes bloqués, demandez de l’aide à l'intervenant. Par ailleurs, si la réponse à une question vous semble trop
 longue, c’est certainement qu’il y a une solution plus rapide. Là
 encore, n’hésitez pas à demander de l’aide…
 
 Un autre objectif de ce TD est de vous montrer l’intérêt de la ligne de
 commande, ainsi que de commencer à explorer la puissance de la ligne de
 commande. Pour réaliser ce TD, vous pouvez essayer de le faire via
-l’interface graphique ou via la ligne de commande[^2]. Cependant
+l’interface graphique ou via la ligne de commande. Cependant
 certaines réponses nécessiteront l’utilisation de la ligne de commande.
 
 Pour réaliser ce TD dans de bonnes conditions, nous vous conseillons de
@@ -28,12 +27,12 @@ Déplacement, visualisation
     visualisez le fichier `TDUnix.pdf`.
 
 
-2.  Le fichier `TDUnix.txt`[^3] est un lien vers le fichier
-    `TDUnix.pdf`.
+2.  Le fichier `TDUnix.txt` est un lien vers le fichier
+    `TDUnix.pdf` (ce lien est mal nommé puisqu'il s'agit d'un PDF)
 
     -   Comment pouvez vous voir qu’il s’agit d’un lien ?
 
-    -   Comment être “sûr” qu’il s’agit effectivement d’un PDF ?
+    -   Comment être *sûr* qu’il s’agit effectivement d’un PDF ?
 
     -   Visualisez le, sans le renommer, afin de pouvoir lire clairement
         le texte du TD.
@@ -62,8 +61,7 @@ Exécution, affichage
 
 8.  Effacez tous les fichiers dont le nom fini par `d`.
 
-9.  Copiez tous les fichiers dont le nom contient un `1` ou un `3` dans
-    un sous-répertoire nommé `copy`[^4].
+9.  Copiez tous les fichiers dont le nom contient un `1` ou un `3` dans un sous-répertoire nommé `copy` (créez le si nécessaire).
 
 10. Mettez, dans un fichier nommé `listeComplete.txt`, la liste de tous
     les fichiers créés par le *script* `init`.
@@ -132,12 +130,3 @@ Un peu d’autonomie
 21. Le déplacer à la racine de votre compte
 
 22. Vérifier que le fichier s’y trouve bien
-
-[^1]: toutes ?
-
-[^2]: La ligne de commande est accessible via l’utilisation d’un
-    terminal
-
-[^3]: mal nommé puisqu’il s’agit d’un PDF…
-
-[^4]: Si le répertoire n’existe pas, il faudra le créer
