@@ -1,4 +1,4 @@
-# UNIX / Linux
+# Manipulation de données sous UNIX / Linux
 
 ## Recherche et classement de données
 
@@ -8,11 +8,9 @@ Récupérer les fichiers suivants depuis [Linux-TD2.tar.gz](data/Linux-TD2.tar.g
 
 2.  Lister les lignes du fichier 2050.txt contenant le chiffre 1 ou le chiffre 5
 
-3.  Modifier cette commande afin de faire apparaître au début de chaque
-    ligne le numéro de la ligne correspondante dans le fichier d’origine
+3.  Modifier cette commande afin de faire apparaître au début de chaque ligne le numéro de la ligne correspondante dans le fichier d’origine
 
-4.  Listez le fichier tp2.txt en faisant précéder chaque ligne par son
-    numéro dans le fichier.
+4.  Listez le fichier tp2.txt en faisant précéder chaque ligne par son numéro dans le fichier.
 
 5.  Renommer le fichier tp2.txt en tp2resultat.txt
 
@@ -33,10 +31,12 @@ Récupérer les fichiers suivants depuis [Linux-TD2.tar.gz](data/Linux-TD2.tar.g
     apparaît-il ?
 
 11. Eliminer les lignes vides et mettre le résultat dans nblng10bis.txt
-    ; extraire les lignes ne contenant que des blancs (espaces ou
-    tabulations) et mettre le résultat dans nblng10ter.txt ; combien y
-    a-t-il de lignes blanches ?
 
+12. Extraire les lignes ne contenant que des blancs (espaces ou tabulations) et mettre le résultat dans nblng10ter.txt
+
+13. Combien y a-t-il de lignes blanches ?
+
+## Redirections
 Les tubes (pipe) Unix permettent de connecter le flot de sortie d’une
 commande au flot d’entrée d’une autre. Ainsi on peut enchaîner plusieurs
 commandes sur un flot initial afin de transformer ce flot par étapes
@@ -48,9 +48,6 @@ successives.
 A partir du fichier notes.txt, écrivez les traitements suivants, en
 utilisant les commandes `tr`, `cut` et `sort` :
 
-1.  Afficher la liste des étudiants de la licence informatique triée par
-    ordre alphabétique des nom et prénom.
+1.  Afficher la liste des étudiants de la licence informatique triée par ordre alphabétique des nom et prénom.
 
-2.  Afficher les résultats de LIN2 par ordre croissant des notes. En cas
-    d’égalité, les étudiants sont rangés par ordre alphabétique des nom
-    et prénom.
+2.  Afficher les résultats de LIN2 par ordre croissant des notes. En cas d’égalité, les étudiants sont rangés par ordre alphabétique des nom et prénom.
