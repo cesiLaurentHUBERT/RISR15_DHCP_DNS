@@ -42,6 +42,6 @@ successives.
 
 A partir du fichier `notes.txt`, écrivez les traitements suivants, en utilisant les commandes `tr`, `cut` et `sort` :
 
-1.  Afficher la liste des étudiants de la licence informatique triée par ordre alphabétique des nom et prénom.
+14.  Afficher la liste des étudiants de la licence informatique triée par ordre alphabétique des nom et prénom.
 
-2.  Afficher les résultats de `LIN2` par ordre croissant des notes. En cas d’égalité, les étudiants sont rangés par ordre alphabétique des nom et prénom.
+15.  Afficher les résultats de `LIN2` par ordre croissant des notes. En cas d’égalité, les étudiants sont rangés par ordre alphabétique des nom et prénom.
