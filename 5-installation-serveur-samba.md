@@ -29,6 +29,23 @@ aux données:
 
 -   Paul
 
+
+### Installation
+Un tutoriel vous est donné ici, ainsi que quelques commandes spécifiques à Jessie
+
+#### Commandes de redémarrage
+
+```bash
+sudo systemctl restart smbd
+```
+
+#### Tutoriel
+Vous pouvez tenir compte de ce tutoriel :
+
+https://debian-facile.org/atelier:chantier:samba-partage-reseau
+
+
+
 ### Serveur FTP
 
 #### Nom de la machine
