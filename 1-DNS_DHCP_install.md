@@ -3,17 +3,35 @@
 ## Introduction
 Ceci est une procédure permettant d'installer un serveur DHCP et DNS sur une machine Debian.
 
+Cette machine comportera :
+
+* 256 Mo de RAM
+* 3 Go de disque dur
+* 2 cartes réseau montées sur deux vmnet différents
+* aucune carte son, ni imprimante
+
+## Configuration du réseau VMWare
 ![Schéma du réseau](images/reseau.png)
 
-Dans ce cas précis, on utilise une VM dont le réseau est 172.16.81.0/24 sur une deuxième carte (eth1). Ceci est à adapter aux besoins.
+Dans ce cas précis, on utilise une VM qui comporte deux cartes :
+
+* une dont le réseau est le réseau externe (eth0).
+* une dont le réseau est 172.16.81.0/24 (eth1).
+
+**Vous devez impérativement gérer ces deux réseaux sur deux *vmnet* différents.**
+
+### Avertissement
+
+Toute configuration ne respectant pas ce qui précède risque de **provoquer des dysfonctionnements** sur le réseau local.
+
+Ceci est à adapter aux besoins.
 
 Attention: il sera nécessaire de rajouter sur les clients (VM) les lignes suivantes si elles ont une seconde carte réseau:
+
 ```conf
 allow-hotplug eth1
 iface eth1 inet dhcp
 ```
-
-## Configuration
 
 ### Carte réseau eth1
 On édite `/etc/network/interfaces`
@@ -43,6 +61,8 @@ On redémarre:
 ```bash
 sudo systemctl restart networking
 ```
+
+## Installation des services
 
 ### Serveur DHCP
 
