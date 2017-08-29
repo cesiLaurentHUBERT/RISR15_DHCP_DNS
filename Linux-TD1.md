@@ -1,4 +1,8 @@
+Premier pas sous Unix
+=====================
 
+
+## Introduction
 
 L’objectif de ce TD est de vous familiariser avec les commandes de base
 d’Unix/Linux. Il est normal que vous ne sachiez pas répondre à quelques
@@ -16,9 +20,9 @@ Pour réaliser ce TD dans de bonnes conditions, nous vous conseillons de
 créer un répertoire spécifique, et de réaliser les actions à partir de
 ce répertoire.
 
+### Avertissement
 
-Premier pas sous Unix
-=====================
+*Il n'est pas nécessaire d'utiliser la commande `sudo` ou la commande `su` au cours de ce TD.*
 
 Déplacement, visualisation
 --------------------------

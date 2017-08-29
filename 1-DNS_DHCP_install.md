@@ -7,25 +7,29 @@ Cette machine comportera :
 
 * 256 Mo de RAM
 * 3 Go de disque dur
-* 2 cartes réseau montées sur deux vmnet différents
+* 2 cartes réseau montées sur deux `vmnet` différents
 * aucune carte son, ni imprimante
 
 ## Configuration du réseau VMWare
 ![Schéma du réseau](images/reseau.png)
 
-Dans ce cas précis, on utilise une VM qui comporte deux cartes :
+Dans ce cas précis, on utilise une VM qui comporte deux cartes (et donc connectée à deux `vmnet` différents) :
 
 * une dont le réseau est le réseau externe (eth0).
 * une dont le réseau est 172.16.81.0/24 (eth1).
 
+Ceci est à adapter aux besoins (c'est-à-dire au plan d'adressage que vous auriez mis en place).
+
 **Vous devez impérativement gérer ces deux réseaux sur deux *vmnet* différents.**
+
+
 
 ### Avertissement
 
-Toute configuration ne respectant pas ce qui précède risque de **provoquer des dysfonctionnements** sur le réseau local.
+Toute configuration ne respectant pas ce qui précède risque de **provoquer des dysfonctionnements** sur le réseau local. Il est de votre responsabilité
 
-Ceci est à adapter aux besoins.
 
+### Configuration spécifique pour une machine avec deux cartes réseau
 Attention: il sera nécessaire de rajouter sur les clients (VM) les lignes suivantes si elles ont une seconde carte réseau:
 
 ```conf
@@ -411,6 +415,8 @@ iptables -X
 ### Tests
 
 Vous devez tester que vos machines clientes se connectent à Internet.
+
+
 ## Interfaces graphiques pour Bind9
 
 Client Web:

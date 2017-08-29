@@ -1,0 +1,27 @@
+  \item Listez le fichier tp2.txt en faisant précéder chaque ligne par son numéro dans le fichier.
+  %cat -n tp2.txt  
+  
+  \item Eliminer les lignes vides et mettre le résultat dans nblng10bis.txt ; %
+  % grep '^$' nblng10.txt
+  %1527 lignes
+  extraire les lignes ne contenant que des blancs (espaces ou tabulations) et mettre le résultat dans nblng10ter.txt ; %
+  % grep '^[[:space:]]\+$' nblng10.txt > ../nblng10bis.txt
+  % grep -n -A1 -B1 '^[[:space:]]\{1\}$' nblng10.txt
+  % grep '^[[:space:]]\{2,3\}$' nblng10.txt
+  % grep '^[[:space:]]\{1,3\}$' nblng10.txt
+  % grep '^[[:space:]]\{1,\}$' nblng10.txt
+  combien y a-t-il de lignes blanches ?
+  % 13
+
+  
+  \item Afficher la liste des étudiants de la licence informatique triée par ordre alphabétique des nom et prénom.
+  % sort -k 1,1 -k 2,2 notes.txt
+  
+  \item Afficher les résultats de LIN2 par ordre croissant des notes. En cas d’égalité, les étudiants sont rangés par ordre alphabétique des nom et prénom.
+  % sort -k4,4n -k 1,1 -k 2,2 notes.txt
+  % n pour numeric sort
+  % ajouter | column -t pour affichage tabulé
+  
+  % (( value = $(cat fichiers/notes.txt |wc -l) - 1 ))
+  % head -1 fichiers/notes.txt ; tail -$((( value = $(cat fichiers/notes.txt |wc -l) - 1 )) ; echo $value) fichiers/notes.txt |sort  -k4,4n -k 1,1 -k 2,2
+  
