@@ -92,3 +92,65 @@ systemctl is-enabled wildfly
 #Désactiver totalement le service
 systemctl mask wildfly
 ```
+
+### Configuration pour accès à distance
+
+Nous allons maintenant configurer `wildfly` pour y accéder à distance.
+
+Pour cela, nous allons modifier (après en avoir fait une copie de sauvegarde) le fichier `/opt/wildfly/standalone/configuration/standalone.xml`
+
+```bash
+cd /opt/wildfly/standalone/configuration
+sudo cp standalone.xml standalone.xml.bak
+```
+
+#### Interface d'administration
+Editer le fichier et remplacer les éléments suivants comme indiqué ci-dessous :
+
+```xml
+<interface name="management">
+  <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+</interface>
+```
+
+par
+
+```xml
+<interface name="management">
+    <any-address/>
+</interface>
+```
+
+L'accès se fait via le port 9990 après avoir redémarré `wildfly`.
+
+#### Accès à distance
+
+Editer le fichier et remplacer les éléments suivants comme indiqué ci-dessous :
+
+```xml
+<interface name="public">
+    <inet-address value="${jboss.bind.address:127.0.0.1}"/>
+</interface>
+```
+
+par
+
+```xml
+<interface name="public">
+    <any-address/>
+</interface>
+```
+
+L'accès se fait via le port 8080 après avoir redémarré `wildfly`.
+
+#### Création d'un utilisateur
+
+La commande suivante permet de créer un utilisateur:
+
+```bash
+sudo /opt/wildfly/bin/add-user.sh
+```
+
+Créer un `Management User` nommé `adminfly`
+
+Se connecter à la console d'administration pour vérifier le bon fonctionnement
